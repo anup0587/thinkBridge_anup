@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="center-container">
+        <div class="flex-box ">
+            <div class="flexBox-item">
+                <div class="proofuploaderbox"
+                    [ngClass]="{'hideuploadinput': (addProductForm.controls['image'].value != null)}">
+                    <div class="uploader-placeholder text-center"
+                        *ngIf="addProductForm.controls['image'].value == null ">
+                        <i class="fas fa-upload"></i>
+                        <p> CLick to Upload Image</p>
+                    </div>
+                    <div class="uploader-placeholder uploadsuccess-placeholder text-center"
+                        *ngIf="addProductForm.controls['image'].value !== null">
+                        <span class="download-delete-proof">
+                            <a href="javascript:void(0);" (click)="removeImg()">
+                                X
+                            </a>
+                        </span>
+                        <img [src]="imageSrc" *ngIf="imageSrc" style="height: 260px; width:500px">
+                    </div>
+                    <input class="fileuploader-input" #productImg type="file" accept="image/*"
+                        (click)="productImg.value = null" (change)="uploadImage($event) " />
+                </div>
+
+                <div *ngIf="successMsg">
+                    <p class="text-success">{{successMsg}}</p>
+                </div>
+            </div>
+            <div class="flexBox-item">
+                <form>
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" class="form-control" placeholder="Title"
+                            [formControl]="addProductForm.controls['title']">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sel1">Select Category:</label>
+                        <select class="form-control" [formControl]="addProductForm.controls['category']">
+                            <option *ngFor="let item of categories$ | async ">{{item}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Price</label>
+                        <input appNumberOnly type="text" class="form-control" [formControl]="addProductForm.controls['price']">
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea class="form-control" rows="3"
+                            [formControl]="addProductForm.controls['description']"></textarea>
+                    </div>
+                    <div class="form-group text-center">
+                        <button class="btn btn-primary" (click)="addProduct(addProductForm)"
+                            [disabled]='addProductForm.invalid'>Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

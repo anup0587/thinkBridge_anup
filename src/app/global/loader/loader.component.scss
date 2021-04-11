@@ -1,0 +1,58 @@
+.overlay {
+    position: fixed;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .4);
+    z-index: 1060;
+}
+.overlay-white{
+    background-color: rgba(255, 255, 255, .4);
+}
+.spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* transform: translate(-50%, -50%); */
+}
+
+.rotateBox {
+    /* -webkit-animation-name: spinner; */
+    /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 1s;
+    /* Safari 4.0 - 8.0 */
+    -webkit-animation-iteration-count: infinite;
+    /* animation-name: spinner; */
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+
+/* Safari 4.0 - 8.0 */
+
+@-webkit-keyframes spinner {
+    33.33% {
+        transform: rotate(120deg);
+    }
+    66.66% {
+        transform: rotate(240deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Standard syntax */
+
+@keyframes spinner {
+    33.33% {
+        transform: rotate(120deg);
+    }
+    66.66% {
+        transform: rotate(240deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

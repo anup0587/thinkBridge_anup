@@ -1,0 +1,12 @@
+.editBox{
+    display:flex;
+    margin: 10px;
+    .childBox{
+        width: 50%;
+        height: auto;
+    }
+
+    .childBox img{
+        width: 70%;
+    }
+}

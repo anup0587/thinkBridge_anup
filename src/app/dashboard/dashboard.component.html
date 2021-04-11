@@ -1,0 +1,21 @@
+<div class="container-fluid dashBoard-wrapper">
+    <ul class="cards" >
+        <li class="cards__item" *ngFor="let product of products">
+          <div class="card">
+            <div class="card__image" [ngStyle]="{'background-image': 'url('+ product.image+')'}"></div>
+            <div class="card__content">
+              <div class="card__title">{{product.title |  titlecase }}</div>
+              
+              <p class="card__text">{{(product.description.length>100)? (product.description | slice:0:100)+'..':(product.description)}}  </p>
+              <div class="card__title">{{product.price | currency:'INR'}}</div>
+              <br>
+              <div class="btn-group">
+                <button class="btn btn-primary" (click)="delete(product)">Delete</button>
+              <button class="btn btn-primary" (click)="editProduct(product)">Edit</button>
+              </div>
+              
+             </div>
+          </div>
+        </li>
+    </ul>
+</div>
